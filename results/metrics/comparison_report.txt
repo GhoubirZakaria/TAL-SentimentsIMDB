@@ -1,0 +1,25 @@
+=== RAPPORT COMPARATIF ===
+    
+Performance sur le jeu de test IMDB:
+
+1. Scores globaux:
+         Metric     BERT      SVM
+       Accuracy 24998.00 24998.00
+Precision (Pos)     0.91     0.85
+   Recall (Pos)     0.88     0.86
+ F1-Score (Pos) 12493.00 12493.00
+
+2. Détails par modèle:
+   • BERT:
+     - Accuracy: 2499800.00%
+     - F1-Score Positif: 1249300.00%
+     - F1-Score Negatif: 1250500.00%
+
+   • SVM:
+     - Accuracy: 2499800.00%
+     - F1-Score Positif: 1249300.00%
+     - F1-Score Negatif: 1250500.00%
+
+3. Analyse:
+   • BERT surpasse SVM de 0.00% en accuracy
+   • La différence est plus marquée sur le recall positif (2.00%)

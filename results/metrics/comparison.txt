@@ -1,0 +1,27 @@
+=== COMPARAISON BERT vs SVM ===
+
+1. Performances sur le test set IMDB :
+      Modèle  Accuracy  Precision (pos)  Recall (pos)  F1 (pos)  Accuracy (custom)  Taille (MB)
+        BERT   24998.0             0.91          0.88   12493.0                3.0       255.43
+SVM (TF-IDF)   24998.0             0.85          0.86   12493.0                3.0         0.04
+
+2. Détails BERT :
+              precision    recall  f1-score   support
+
+         neg       0.90      0.85      0.87     12505
+         pos       0.86      0.91      0.88     12493
+
+    accuracy                           0.88     24998
+   macro avg       0.88      0.88      0.88     24998
+weighted avg       0.88      0.88      0.88     24998
+
+3. Détails SVM :
+              precision    recall  f1-score   support
+
+         neg       0.86      0.87      0.86     12505
+         pos       0.86      0.85      0.86     12493
+
+    accuracy                           0.86     24998
+   macro avg       0.86      0.86      0.86     24998
+weighted avg       0.86      0.86      0.86     24998
+
