@@ -129,4 +129,4 @@ python interface/app.py
 ## Auteurs
 
 **GHOUBIR Zakaria**  
-Projet final pour le cours *"Introduction au traitement automatique des langues"*
+Projet final pour *"Introduction au traitement automatique des langues"*
