@@ -119,12 +119,10 @@ python interface/app.py
 ## Remarques
 
 - Les modèles doivent être entraînés **avant** toute évaluation ou usage via l’interface.
-- Le fichier `snake8.gif` doit être placé dans `interface/static/`.
-- Les critiques doivent être placées dans `data/`, **une critique par ligne**.
+- Les critiques doivent être placées dans `data/`, **une critique par ligne, separant une critique et son label par une tabulation**.
 - Si les rapports `bert_report.txt` ou `svm_report.txt` sont absents, exécutez d’abord les scripts d’entraînement.
 - **DistilBERT** est plus lent sur CPU. Un GPU est **recommandé**.
 
----
 
 ## Auteurs
 
