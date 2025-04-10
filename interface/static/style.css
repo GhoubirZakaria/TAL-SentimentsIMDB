@@ -1,0 +1,277 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #e6f0fa; /* Softer light blue */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Softer shadow */
+}
+
+h1 {
+    color: #34495e; /* Softer dark gray */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 97%;
+    height: 125px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 16px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #4a5568; /* Softer text color */
+}
+
+select, button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+button {
+    background: #38b2ac; /* Teal */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-end;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #319795; /* Darker teal on hover */
+}
+
+#results {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9f9f9; /* Fond clair en mode clair */
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease; /* Transition fluide */
+}
+
+.result-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.result-row span:first-child {
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.prediction {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.prediction.pos {
+    background: #c6f6d5; /* Softer green */
+    color: #2f855a;
+}
+
+.prediction.neg {
+    background: #fed7d7; /* Light coral */
+    color: #9b2c2c;
+}
+
+.prediction.error {
+    background: #fefcbf; /* Pale yellow */
+    color: #b7791f;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #4a5568; /* Slightly lighter than before */
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #fff;
+    border-top: 1px solid #ccc;
+    margin-top: 40px;
+    border-radius: 0 0 8px 8px;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer horizontalement */
+    margin: 20px auto;
+}
+
+.snake-gif {
+    width: 100px; /* Ajuste la taille selon ton GIF */
+    height: auto;
+    display: block; /* Assure que l'image est centrée */
+    margin: 0 auto; /* Centrer l'image horizontalement */
+}
+
+.timer {
+    margin-top: 10px; /* Espace entre le GIF et le timer */
+    font-size: 16px;
+    color: #4a5568; /* Couleur de texte cohérente avec ton design */
+    text-align: center; /* Centrer le texte du timer */
+}
+
+.timer #timer-count {
+    font-weight: bold;
+    color: #3498db; /* Bleu pour correspondre à ton bouton */
+}
+
+/* Style du bouton de mode sombre */
+.dark-mode-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 16px;
+    background-color: #3498db; /* Bleu pour correspondre à ton thème */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+    background-color: #2980b9; /* Bleu plus foncé au survol */
+}
+
+/* Styles par défaut (mode clair) */
+body {
+    background-color: #f5f5f5; /* Fond clair */
+    color: #2c3e50; /* Texte sombre */
+}
+
+/* Styles pour le mode sombre */
+body.dark-mode {
+    background-color: #1a202c; /* Fond sombre */
+    color: #e2e8f0; /* Texte clair */
+}
+
+body.dark-mode .container {
+    background-color: #2d3748; /* Fond du conteneur en mode sombre */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre plus prononcée */
+}
+
+body.dark-mode h1 {
+    color: #e2e8f0; /* Titre clair en mode sombre */
+}
+
+body.dark-mode textarea {
+    background-color: #4a5568; /* Fond de la textarea en mode sombre */
+    color: #e2e8f0; /* Texte clair */
+    border-color: #718096; /* Bordure plus claire */
+}
+
+body.dark-mode .controls .input-group label {
+    color: #e2e8f0; /* Labels clairs */
+}
+
+body.dark-mode select,
+body.dark-mode button#evaluate-btn {
+    background-color: #4a5568; /* Fond des inputs en mode sombre */
+    color: #e2e8f0; /* Texte clair */
+    border-color: #718096; /* Bordure plus claire */
+}
+
+body.dark-mode select option {
+    background-color: #2d3748; /* Fond des options en mode sombre */
+    color: #e2e8f0; /* Texte clair */
+}
+
+body.dark-mode button#evaluate-btn {
+    background-color: #38b2ac; /* Bouton teal en mode sombre */
+}
+
+body.dark-mode button#evaluate-btn:hover {
+    background-color: #319795; /* Teal plus foncé au survol */
+}
+
+body.dark-mode #results {
+    background: #2d3748; /* Fond sombre en mode sombre */
+    color: #e2e8f0; /* Texte clair */
+}
+
+body.dark-mode #results p {
+    color: #e2e8f0; /* Texte clair pour les paragraphes */
+}
+
+body.dark-mode #results strong {
+    color: #e2e8f0; /* Texte clair pour les strong (Prédiction, Label original, etc.) */
+}
+
+body.dark-mode .prediction.pos {
+    background: #2f855a; /* Fond vert foncé pour positif */
+    color: #c6f6d5; /* Texte vert clair */
+}
+
+body.dark-mode .prediction.neg {
+    background: #9b2c2c; /* Fond rouge foncé pour négatif */
+    color: #fed7d7; /* Texte rouge clair */
+}
+
+body.dark-mode .prediction.error {
+    background: #b7791f; /* Fond jaune foncé pour erreur */
+    color: #fefcbf; /* Texte jaune clair */
+}
+
+body.dark-mode .timer {
+    color: #e2e8f0; /* Timer clair */
+}
+
+body.dark-mode .timer #timer-count {
+    color: #38b2ac; /* Compteur en teal */
+}
+
+body.dark-mode .footer {
+    background-color: #2d3748; /* Fond du footer en mode sombre */
+    color: #e2e8f0; /* Texte clair */
+}

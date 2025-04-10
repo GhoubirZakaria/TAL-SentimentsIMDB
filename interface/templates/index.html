@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analyse de Sentiments</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Analyseur de Critiques</h1>
+        <!-- Bouton pour basculer le mode sombre -->
+        <button id="dark-mode-toggle" class="dark-mode-btn">Mode Sombre</button>
+        
+        <textarea id="review-input" placeholder="Entrez votre critique ici..."></textarea>
+        
+        <div class="controls">
+            <div class="input-group">
+                <label for="model-select">Modèle :</label>
+                <select id="model-select">
+                    <option value="svm">SVM (Rapide)</option>
+                    <option value="bert">DistilBERT (Précis)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="true-label">Label original :</label>
+                <select id="true-label">
+                    <option value="?">-- Optionnel --</option>
+                    <option value="pos">Positif</option>
+                    <option value="neg">Négatif</option>
+                </select>
+            </div>
+            
+            <button id="evaluate-btn">Évaluer</button>
+        </div>
+        
+        <!-- Résultats -->
+        <div id="results">
+            <!-- Conteneur pour le GIF et le timer -->
+            <div class="loader" style="display: none;">
+                <img src="/static/snake8.gif" alt="Loading snake" class="snake-gif">
+                <div class="timer">
+                    <span id="timer-count">0.0</span> s
+                </div>
+            </div>
+            <p><strong>Prédiction : </strong><span id="prediction"></span></p>
+            <p><strong>Label original : </strong><span id="true-label-display"></span></p>
+            <p><strong>Modèle utilisé : </strong><span id="model-used"></span></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-left">Fait par : GHOUBIR Zakaria</div>
+        <div class="footer-center">Introduction au traitement automatique des langues</div>
+        <div class="footer-right">Projet final</div>
+    </footer>
+
+    <!-- Script à la fin du body -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestion du mode sombre
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Vérifier si le mode sombre est déjà activé (par exemple, en utilisant localStorage)
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.textContent = 'Mode Clair';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.textContent = 'Mode Clair';
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                darkModeToggle.textContent = 'Mode Sombre';
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        });
+
+        // Gestion de l'évaluation (ton code existant)
+        const evaluateBtn = document.getElementById('evaluate-btn');
+        let timerInterval = null;
+
+        evaluateBtn.addEventListener('click', async function() {
+            const text = document.getElementById('review-input').value;
+            const model = document.getElementById('model-select').value;
+            const trueLabel = document.getElementById('true-label').value;
+            
+            if (!text.trim()) {
+                alert('Veuillez entrer une critique valide !');
+                return;
+            }
+
+            const loader = document.querySelector('.loader');
+            const timerCount = document.getElementById('timer-count');
+            loader.style.display = 'block';
+            document.getElementById('prediction').textContent = '';
+            document.getElementById('true-label-display').textContent = '';
+            document.getElementById('model-used').textContent = '';
+
+            let startTime = Date.now();
+            timerInterval = setInterval(() => {
+                let elapsedTime = (Date.now() - startTime) / 1000;
+                timerCount.textContent = elapsedTime.toFixed(1);
+            }, 100);
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        model: model,
+                        true_label: trueLabel
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Erreur réseau');
+                }
+                
+                const data = await response.json();
+                
+                clearInterval(timerInterval);
+                loader.style.display = 'none';
+                
+                if (data.success) {
+                    const predictionElement = document.getElementById('prediction');
+                    predictionElement.textContent = data.prediction === 'pos' ? 'Positif' : 'Négatif';
+                    predictionElement.className = 'prediction ' + data.prediction;
+
+                    document.getElementById('true-label-display').textContent = 
+                        data.true_label === 'non spécifié' ? '-' : (data.true_label === 'pos' ? 'Positif' : 'Négatif');
+                    document.getElementById('model-used').textContent = data.model_used;
+                } else {
+                    alert('Erreur : ' + (data.error || 'Inconnue'));
+                }
+            } catch (error) {
+                clearInterval(timerInterval);
+                loader.style.display = 'none';
+                console.error('Erreur:', error);
+                alert('Erreur de communication avec le serveur');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

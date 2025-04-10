@@ -1,0 +1,39 @@
+2025-04-10 02:43:11,165 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-10 02:43:11,166 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 02:43:11,168 INFO  * Restarting with stat
+2025-04-10 02:43:11,502 WARNING  * Debugger is active!
+2025-04-10 02:43:11,507 INFO  * Debugger PIN: 121-029-568
+2025-04-10 02:43:16,763 INFO 127.0.0.1 - - [10/Apr/2025 02:43:16] "GET / HTTP/1.1" 200 -
+2025-04-10 02:43:17,024 INFO 127.0.0.1 - - [10/Apr/2025 02:43:17] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-10 02:56:47,188 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-10 02:56:47,220 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 02:56:47,222 INFO  * Restarting with stat
+2025-04-10 02:56:47,539 WARNING  * Debugger is active!
+2025-04-10 02:56:47,545 INFO  * Debugger PIN: 121-029-568
+2025-04-10 02:56:51,099 INFO 127.0.0.1 - - [10/Apr/2025 02:56:51] "GET / HTTP/1.1" 200 -
+2025-04-10 02:56:51,206 INFO 127.0.0.1 - - [10/Apr/2025 02:56:51] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-10 02:57:59,702 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-10 02:57:59,703 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 02:57:59,704 INFO  * Restarting with stat
+2025-04-10 02:58:00,033 WARNING  * Debugger is active!
+2025-04-10 02:58:00,039 INFO  * Debugger PIN: 121-029-568
+2025-04-10 02:58:03,481 INFO 127.0.0.1 - - [10/Apr/2025 02:58:03] "GET / HTTP/1.1" 200 -
+2025-04-10 02:58:03,582 INFO 127.0.0.1 - - [10/Apr/2025 02:58:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 03:05:26,231 INFO  * Detected change in 'C:\\Users\\GOBR1\\Downloads\\TAL-Prototype\\interface\\app.py', reloading
+2025-04-10 03:05:26,288 INFO  * Restarting with stat
+2025-04-10 03:05:26,679 WARNING  * Debugger is active!
+2025-04-10 03:05:26,685 INFO  * Debugger PIN: 121-029-568
+2025-04-10 03:17:33,792 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-10 03:17:33,793 INFO [33mPress CTRL+C to quit[0m
+2025-04-10 03:17:33,794 INFO  * Restarting with stat
+2025-04-10 03:17:34,136 WARNING  * Debugger is active!
+2025-04-10 03:17:34,142 INFO  * Debugger PIN: 121-029-568
+2025-04-10 03:17:37,266 INFO 127.0.0.1 - - [10/Apr/2025 03:17:37] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-04-10 03:17:37,401 INFO 127.0.0.1 - - [10/Apr/2025 03:17:37] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-04-10 03:17:37,407 INFO 127.0.0.1 - - [10/Apr/2025 03:17:37] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-04-10 03:17:37,438 INFO 127.0.0.1 - - [10/Apr/2025 03:17:37] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-04-10 03:17:37,454 INFO 127.0.0.1 - - [10/Apr/2025 03:17:37] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=MoR60sLjMCpJ3EK6oaCT HTTP/1.1" 200 -
