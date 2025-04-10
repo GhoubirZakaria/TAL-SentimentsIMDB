@@ -1,33 +1,132 @@
--->pour lancer l'entrainement des deux modèles:
+# TAL-SentimentsIMDB
+
+**TAL-SentimentsIMDB** est un projet d’analyse de sentiments sur des critiques de films, utilisant le dataset IMDB.  
+Il compare deux modèles d’apprentissage automatique : un modèle **SVM** (Support Vector Machine) rapide et un modèle **DistilBERT** précis.  
+
+Le projet inclut des scripts pour :
+- Entraîner les modèles,
+- Évaluer des critiques,
+- Comparer leurs performances,
+- Tester les prédictions via une interface utilisateur interactive.
+
+
+## Utilisation
+
+### 1. Entraînement des Modèles
+
+#### ➤ Entraîner le modèle SVM :
+```bash
 python scripts/train_svm.py
+```
+
+- **Sortie** : `models/model.pkl`  
+- **Rapport** : `results/metrics/svm_report.txt`
+
+#### ➤ Entraîner le modèle DistilBERT :
+```bash
 python scripts/train_bert.py
+```
 
-        (apres l'entrainemnet mes modeles sont chargés dans models (model.pkl pour SVM et model.safetensors pour BERT existent))
+- **Sortie** : `models/model.safetensors`  
+- **Rapport** : `results/metrics/bert_report.txt`
 
 
--->pour evaluer un fichier texte contenant des critiques par un modèle:
-python scripts/evaluate.py (le modele svm ou bert) data/(target text file)
+### 2. Évaluation d’un Fichier de Critiques
 
--->la Comparaison des resulats sur train et test:
-        Charge automatiquement les résultats depuis :
+#### ➤ Commande :
+```bash
+python scripts/evaluate.py <modèle> data/<fichier_texte>
+```
 
-                results/metrics/bert_report.txt
+- `<modèle>` : `svm` ou `bert`  
+- `<fichier_texte>` : Nom du fichier dans `data/` (ex : `reviews.txt` qui respecte le format '(critique)\tab(label)')
 
-                results/metrics/svm_report.txt
+#### ➤ Exemple :
+```bash
+python scripts/evaluate.py svm data/reviews.txt
+```
 
-        Génère deux sorties professionnelles :
+- **Sortie** : Prédictions (positif ou négatif) pour chaque critique, affichées dans la console.
 
-            Un graphique comparatif (model_comparison.png)
 
-            Un rapport textuel (comparison_report.txt)
+### 3. Comparaison des Performances
 
-        Métriques comparées :
+#### ➤ Commande :
+```bash
+python scripts/compare.py
+```
 
-            Accuracy globale
+- **Entrées** :  
+  `results/metrics/bert_report.txt`  
+  `results/metrics/svm_report.txt`
 
-            Precision/Recall/F1 pour la classe positive
+- **Sorties** :  
+  - `results/model_comparison.png` : Graphique comparatif (accuracy, precision, recall, F1)  
+  - `results/comparison_report.txt` : Rapport détaillé des différences
 
-            Différences absolues entre les modèles
-        L'éxec:
-            python scripts/compare.py
+- **Métriques comparées** :
+  - Accuracy globale  
+  - Precision, Recall, F1 pour la classe positive  
+  - Différences absolues entre les modèles
 
+
+### 4. Lancer l’Interface Utilisateur
+
+#### ➤ Commande :
+```bash
+python interface/app.py
+```
+
+- **Accès** : [http://localhost:5000](http://localhost:5000)
+
+#### ➤ Fonctionnalités :
+- Saisie d’une critique dans un champ texte
+- Choix du modèle (`SVM` ou `DistilBERT`)
+- Choix d’un label original (optionnel)
+- Affichage de la prédiction, label original et modèle utilisé
+- Bouton **Mode Sombre** pour changer le thème
+
+
+## Fonctionnement Général
+
+### 🔹 Entraînement :
+- `train_svm.py` :
+  - Prétraitement (nettoyage, TF-IDF)
+  - Entraînement du SVM
+  - Sauvegarde dans `models/model.pkl`
+- `train_bert.py` :
+  - Tokenisation avec DistilBERT tokenizer
+  - Entraînement du modèle
+  - Sauvegarde dans `models/model.safetensors`
+
+### 🔹 Évaluation :
+- `evaluate.py` :
+  - Charge un modèle
+  - Lit un fichier texte
+  - Effectue les prédictions ligne par ligne
+
+### 🔹 Comparaison :
+- `compare.py` :
+  - Lit les rapports
+  - Calcule les écarts entre modèles
+  - Génère un graphique + rapport texte
+
+### 🔹 Interface :
+- `app.py` : Application Flask (serveur local)
+- `index.html` / `style.css` : Design responsive, mode sombre, loader des resultats animé
+
+
+## Remarques
+
+- Les modèles doivent être entraînés **avant** toute évaluation ou usage via l’interface.
+- Le fichier `snake8.gif` doit être placé dans `interface/static/`.
+- Les critiques doivent être placées dans `data/`, **une critique par ligne**.
+- Si les rapports `bert_report.txt` ou `svm_report.txt` sont absents, exécutez d’abord les scripts d’entraînement.
+- **DistilBERT** est plus lent sur CPU. Un GPU est **recommandé**.
+
+---
+
+## Auteurs
+
+**GHOUBIR Zakaria**  
+Projet final pour le cours *"Introduction au traitement automatique des langues"*
