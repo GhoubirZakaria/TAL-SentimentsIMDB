@@ -1,4 +1,4 @@
-"""from datasets import load_dataset
+from datasets import load_dataset
 import pandas as pd
 
 # Téléchargement des données
@@ -17,4 +17,4 @@ test_df["label"] = test_df["label"].map({1: "pos", 0: "neg"})
 train_df.to_csv("train.txt", sep="\t", columns=["text", "label"], index=False, header=False)
 test_df.to_csv("test.txt", sep="\t", columns=["text", "label"], index=False, header=False)
 
-print("Données prêtes dans train.txt et test.txt")"""
+print("Données prêtes dans train.txt et test.txt")

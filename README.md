@@ -12,6 +12,12 @@ Le projet inclut des scripts pour :
 
 ## Utilisation
 
+#### ➤ Installé le paquet datasets de Hugging Face :
+```bash
+pip install datasets
+```
+Ensuite, exécutez download_imdb.py pour télécharger les fichiers train et test en csv, puis les convertir au format .txt.
+
 ### 1. Entraînement des Modèles
 
 #### ➤ Entraîner le modèle SVM :
