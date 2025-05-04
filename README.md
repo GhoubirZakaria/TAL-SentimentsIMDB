@@ -12,7 +12,7 @@ Le projet inclut des scripts pour :
 
 ## Utilisation
 
-#### ➤ Installé le paquet datasets de Hugging Face :
+#### ➤ Installer le paquet datasets de Hugging Face :
 ```bash
 pip install datasets
 ```
